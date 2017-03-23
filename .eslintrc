@@ -1,0 +1,13 @@
+{
+  "extends":  "postform",
+
+  "env": {
+    "browser": true,
+    "node": true
+  },
+
+ "globals": {
+    "jest": true,
+    "test": true,
+  },
+}

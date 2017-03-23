@@ -1,0 +1,61 @@
+{
+  "name": "react-forml-redux",
+  "description": "Ruthlessly simple bindings to keep react-forml and redux in sync",
+  "homepage": "https://postform.io",
+  "version": "0.1.1",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/postform/react-forml-redux.git"
+  },
+  "scripts": {
+    "build": "gulp build --gulpfile config/gulpfile.js --cwd .",
+    "coverage": "yarn run test -- --coverage",
+    "lint:js": "eslint config src",
+    "lint:js:fix": "yarn run lint:js -- --fix",
+    "prepublish": "yarn run build",
+    "test": "NODE_ENV=test jest",
+    "test:watch": "yarn run test -- --watch",
+    "watch": "gulp watch --gulpfile config/gulpfile.js --cwd ."
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "peerDependencies": {
+    "redux-saga": "^0.13.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.18.0",
+    "chalk": "^1.1.3",
+    "del": "^2.2.2",
+    "eslint": "^3.14.1",
+    "eslint-config-postform": "^0.1.7",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "gulp": "gulpjs/gulp.git#4.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.4.0",
+    "jest": "^18.1.0",
+    "promise": "^7.1.1",
+    "react-dev-utils": "^0.4.2",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "react-test-renderer": "^15.4.0",
+    "redux-saga": "^0.13.0",
+    "regenerator-runtime": "^0.10.1"
+  },
+  "jest": {
+    "testPathDirs": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "cacheDirectory": "<rootDir>/.tmp/jest"
+  }
+}
