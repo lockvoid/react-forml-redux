@@ -17,7 +17,6 @@ Run the saga:
 import { saga } from 'react-forml-redux';
 
 // Run it.
-
 ```
 
 Then in your container:
@@ -25,7 +24,14 @@ Then in your container:
 ```
 import { bindSubmitFormToPromise } from 'react-forml-redux';
 import { signin } from './creators';
-...
+
+class SigninFormContainer extends Component {
+  onSubmit = ({ email, password }) => {
+    const { signin: signinDispatch } = this.props;
+
+    return signinDispatch(email, password); // It's a promise.
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   signin: bindSubmitFormToPromise(signin, SIGNIN_SUCCESS, SIGNIN_FAILURE, dispatch),
