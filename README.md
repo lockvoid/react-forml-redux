@@ -18,6 +18,46 @@ import { saga } from 'react-forml-redux';
 
 // Run it.
 ```
+Then there are two options:
+
+### Option 1:
+
+In your container:
+
+```
+import { bindSubmitFormToPromise } from 'react-forml-redux';
+import { signin } from './creators';
+import { SIGNIN_SUCCESS, SIGNIN_FAILURE } from './actions';
+
+class SigninFormContainer extends Component {
+  onSubmit = ({ email, password }) => {
+    const { signin: signinDispatch } = this.props;
+
+    return signinDispatch(email, password); // It's a promise.
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  signin: bindSubmitFormToPromise(signin, SIGNIN_SUCCESS, SIGNIN_FAILURE, dispatch),
+});
+
+export default connect(null, mapDispatchToProps)(withRouter(SigninFormContainer));
+```
+
+### Option 2
+
+In your creator:
+
+```
+function signin(payload) {
+  type: SIGNIN_REQUEST,
+  payload,
+  meta: {
+    successAction: SIGNIN_SUCCESS,
+    failureAction: SIGNIN_FAILURE,
+  },
+}
+```
 
 Then in your container:
 
@@ -34,7 +74,7 @@ class SigninFormContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  signin: bindSubmitFormToPromise(signin, SIGNIN_SUCCESS, SIGNIN_FAILURE, dispatch),
+  signin: bindSubmitFormToPromise(signin, dispatch),
 });
 
 export default connect(null, mapDispatchToProps)(withRouter(SigninFormContainer));
