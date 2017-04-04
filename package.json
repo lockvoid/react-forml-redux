@@ -2,7 +2,7 @@
   "name": "react-forml-redux",
   "description": "Ruthlessly simple bindings to keep react-forml and redux in sync",
   "homepage": "https://postform.io",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "main": "lib/index.js",
   "repository": {
